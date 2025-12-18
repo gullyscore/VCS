@@ -78,16 +78,25 @@
   <div class="container">
     <h2>🏏 Start Local Match</h2>
 
-    <label>Team A Name</label>
-    <input id="teamA" type="text" placeholder="e.g. Village XI">
+    <label>Batting Team</label>
+    <input id="batting" type="text" placeholder="e.g. CSK">
 
-    <label>Team B Name</label>
-    <input id="teamB" type="text" placeholder="e.g. Street Kings">
+    <label>Bowling Team</label>
+    <input id="bowling" type="text" placeholder="e.g. RCB">
+
+    <label>Striker Name</label>
+    <input id="striker" type="text" placeholder="e.g. Ruturaj">
+
+    <label>Non-Striker Name</label>
+    <input id="nonStriker" type="text" placeholder="e.g. Conway">
+
+    <label>Bowler Name</label>
+    <input id="bowler" type="text" placeholder="e.g. Siraj">
 
     <label>Overs</label>
     <input id="overs" type="number" placeholder="e.g. 10">
 
-    <div id="error" class="error">Please fill all fields correctly</div>
+    <div id="error" class="error">Please fill all fields</div>
 
     <button onclick="startMatch()">Start Match</button>
 
@@ -96,29 +105,34 @@
 
   <script>
     function startMatch() {
-      const teamA = document.getElementById("teamA").value.trim();
-      const teamB = document.getElementById("teamB").value.trim();
-      const overs = document.getElementById("overs").value.trim();
-      const error = document.getElementById("error");
-
-      if (!teamA || !teamB || !overs || overs <= 0) {
-        error.style.display = "block";
-        return;
-      }
-
-      // Save match details
       const matchData = {
-        teamA,
-        teamB,
-        overs: Number(overs),
+        batting: batting.value.trim(),
+        bowling: bowling.value.trim(),
+        striker: striker.value.trim(),
+        nonStriker: nonStriker.value.trim(),
+        bowler: bowler.value.trim(),
+        overs: Number(overs.value),
         runs: 0,
         wickets: 0,
         balls: 0
       };
 
-      localStorage.setItem("gullyscore_match", JSON.stringify(matchData));
+      if (
+        !matchData.batting ||
+        !matchData.bowling ||
+        !matchData.striker ||
+        !matchData.bowler ||
+        !matchData.overs
+      ) {
+        document.getElementById("error").style.display = "block";
+        return;
+      }
 
-      // Go to scoring page (next step)
+      localStorage.setItem(
+        "gullyscore_match",
+        JSON.stringify(matchData)
+      );
+
       window.location.href = "/gullyscore/score.html";
     }
   </script>
