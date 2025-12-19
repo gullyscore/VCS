@@ -226,37 +226,5 @@
 </body>
 </html>
 <script>
-  loadLiveScores();
-  setInterval(loadLiveScores, 15000);
-</script>
 
-<!-- 🔴 WICKET POPUP — IDI IKKADE PASTE CHEYYALI -->
-<div id="wicketPopup" class="popup hidden">
-  <div class="popup-card">
-    <h3>Wicket Details</h3>
-
-    <label>Wicket Type</label>
-    <select id="wicketType">
-      <option>Bowled</option>
-      <option>Caught</option>
-      <option>LBW</option>
-      <option>Run Out</option>
-      <option>Stumped</option>
-    </select>
-
-    <label>Fielder</label>
-    <input type="text" id="fielder" placeholder="Fielder name" />
-
-    <label>New Batsman</label>
-    <input type="text" id="newBatsman" placeholder="Batsman name" />
-
-    <div class="popup-actions">
-      <button onclick="confirmWicket()">Confirm</button>
-      <button class="cancel" onclick="closeWicket()">Cancel</button>
-    </div>
-  </div>
-</div>
-
-</body>
-</html>
 
